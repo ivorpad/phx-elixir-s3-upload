@@ -9,6 +9,7 @@ defmodule ApiUploaderWeb.Router do
     pipe_through :api
 
     post "/upload", UploadController, :create
+    get "/upload_vars", UploadController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

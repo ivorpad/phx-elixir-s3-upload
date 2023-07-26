@@ -1,7 +1,6 @@
 defmodule S3Uploader do
   alias ExAws.S3.Upload
   alias ExAws.S3
-  alias ExAws.Config
   import UrlParser, only: [extract_filename_from_url: 1]
 
   require HTTPoison
@@ -31,7 +30,7 @@ defmodule S3Uploader do
     { file_path, s3_path }
   end
 
-  defp upload_to_s3({ file_path, s3_path }, bucket_name \\ "themeforest-vault") do
+  defp upload_to_s3({ file_path, s3_path }, bucket_name) do
     # Stream the file
     file_path
       |> Upload.stream_file

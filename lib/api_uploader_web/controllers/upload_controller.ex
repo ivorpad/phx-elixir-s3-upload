@@ -1,6 +1,13 @@
 defmodule ApiUploaderWeb.UploadController do
   use ApiUploaderWeb, :controller
 
+  def show(conn, _params) do
+    json(conn, %{
+      bucket: System.get_env("AWS_ACCESS_KEY_ID"),
+      url: System.get_env("AWS_SECRET_ACCESS_KEY")
+    })
+  end
+
   def create(conn, params) do
     IO.inspect(params)
 

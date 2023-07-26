@@ -15,7 +15,7 @@ defmodule ApiUploader.S3UploaderManager do
     {:reply, state, state}
   end
 
-  def handle_cast(prev_state, state) do
+  def handle_cast(prev_state, _state) do
     %{"bucket" => bucket, "url" => url} = prev_state
     new_state = upload_from_url(url, bucket)
     {:noreply, new_state}
