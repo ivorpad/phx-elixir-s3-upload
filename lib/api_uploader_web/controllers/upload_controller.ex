@@ -1,21 +1,22 @@
 defmodule ApiUploaderWeb.UploadController do
   use ApiUploaderWeb, :controller
 
-  def create(conn, params) do
-    IO.inspect(params)
+  def create(conn, %{"url" => url, "bucket" => bucket} = params)
+      when is_binary(url) and is_binary(bucket) do
+    api_key = System.get_env("API_KEY")
 
-    case params do
-      %{"url" => url, "bucket" => bucket} ->
-
+    case get_req_header(conn, "authorization") do
+      [authorization] when authorization == api_key ->
         pid = Process.whereis(ApiUploader.S3UploaderManager)
-
         GenServer.cast(pid, %{"url" => url, "bucket" => bucket})
-
         json(conn, %{message: "Successfully processed the URL"})
 
       _ ->
-        # Handle the missing "url" key here
-        json(conn, %{error: "URL parameter is missing"})
+        json(conn, %{error: "Authorization header is missing or invalid"})
     end
+  end
+
+  def create(conn, _params) do
+    json(conn, %{error: "URL or bucket parameter is missing"})
   end
 end

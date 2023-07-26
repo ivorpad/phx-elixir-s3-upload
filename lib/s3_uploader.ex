@@ -27,15 +27,15 @@ defmodule S3Uploader do
     file_path = "#{tmp_dir}/#{s3_path}.zip"
 
     File.write!(file_path, body)
-    { file_path, s3_path }
+    {file_path, s3_path}
   end
 
-  defp upload_to_s3({ file_path, s3_path }, bucket_name) do
+  defp upload_to_s3({file_path, s3_path}, bucket_name) do
     # Stream the file
     file_path
-      |> Upload.stream_file
-      |> S3.upload(bucket_name, s3_path)
-      |> ExAws.request!()
+    |> Upload.stream_file()
+    |> S3.upload(bucket_name, s3_path)
+    |> ExAws.request!()
 
     {:ok, file_path}
   end

@@ -3,7 +3,7 @@ defmodule ApiUploader.Repo.Migrations.CreateUploads do
 
   def change do
     create table(:uploads) do
-      add :url, :string
+      add(:url, :string)
 
       timestamps()
     end

@@ -32,7 +32,6 @@ config :cors_plug,
   methods: ["GET", "POST"],
   headers: ["Content-Type", "Authorization"]
 
-
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",

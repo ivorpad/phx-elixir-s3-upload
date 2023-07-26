@@ -21,17 +21,18 @@ config :api_uploader, ApiUploaderWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
-  config :ex_aws,
-    access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
-    secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
-    region: System.get_env("AWS_REGION") || "us-east-2"
-  # debug_requests: true
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  region: System.get_env("AWS_REGION") || "us-east-2"
 
-  config :ex_aws, :s3,
-    scheme: "https://",
-    host: "s3-us-east-2.amazonaws.com",
-    bucket: "themeforest-vault",
-    region: "us-east-2"
+# debug_requests: true
+
+config :ex_aws, :s3,
+  scheme: "https://",
+  host: "s3-us-east-2.amazonaws.com",
+  bucket: "themeforest-vault",
+  region: "us-east-2"
 
 # ## SSL Support
 #

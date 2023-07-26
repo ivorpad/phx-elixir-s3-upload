@@ -19,7 +19,7 @@ defmodule ApiUploader.MixProject do
   def application do
     [
       mod: {ApiUploader.Application, []},
-      extra_applications: [:logger, :runtime_tools],
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -49,7 +49,7 @@ defmodule ApiUploader.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:hackney, "~> 1.17"},
       {:poison, "~> 4.0"},
-      {:cors_plug, "~> 1.4.0"}
+      {:cors_plug, "~> 3.0.3"}
     ]
   end
 

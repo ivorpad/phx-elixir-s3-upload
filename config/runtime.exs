@@ -21,7 +21,6 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
-
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want
@@ -53,6 +52,7 @@ if config_env() == :prod do
     access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
     secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
     region: System.get_env("AWS_REGION") || "us-east-2"
+
   # debug_requests: true
 
   config :ex_aws, :s3,
