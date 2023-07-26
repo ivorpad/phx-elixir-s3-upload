@@ -5,11 +5,11 @@ defmodule ApiUploaderWeb.UploadController do
     IO.inspect(params)
 
     case params do
-      %{"url" => url} ->
+      %{"url" => url, "bucket" => bucket} ->
 
         pid = Process.whereis(ApiUploader.S3UploaderManager)
 
-        GenServer.cast(pid, url)
+        GenServer.cast(pid, %{"url" => url, "bucket" => bucket})
 
         json(conn, %{message: "Successfully processed the URL"})
 

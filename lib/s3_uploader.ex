@@ -6,8 +6,8 @@ defmodule S3Uploader do
 
   require HTTPoison
 
-  def upload_from_url(url) do
-    {:ok, file_path} = url |> download_file |> upload_to_s3
+  def upload_from_url(url, bucket_name) do
+    {:ok, file_path} = url |> download_file |> upload_to_s3(bucket_name)
 
     File.rm!(file_path)
     :ok
@@ -35,7 +35,7 @@ defmodule S3Uploader do
     # Stream the file
     file_path
       |> Upload.stream_file
-      |> S3.upload("themeforest-vault", s3_path)
+      |> S3.upload(bucket_name, s3_path)
       |> ExAws.request!()
 
     {:ok, file_path}

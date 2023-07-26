@@ -1,6 +1,6 @@
 defmodule ApiUploader.S3UploaderManager do
   use GenServer
-  import S3Uploader, only: [upload_from_url: 1]
+  import S3Uploader, only: [upload_from_url: 2]
 
   # GenServer API
   def start_link(_) do
@@ -15,8 +15,9 @@ defmodule ApiUploader.S3UploaderManager do
     {:reply, state, state}
   end
 
-  def handle_cast(url, state) do
-    new_state = upload_from_url(url)
+  def handle_cast(prev_state, state) do
+    %{"bucket" => bucket, "url" => url} = prev_state
+    new_state = upload_from_url(url, bucket)
     {:noreply, new_state}
   end
 end
