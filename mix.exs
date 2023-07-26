@@ -48,7 +48,8 @@ defmodule ApiUploader.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:sweet_xml, "~> 0.6"},
       {:hackney, "~> 1.17"},
-      {:poison, "~> 4.0"}
+      {:poison, "~> 4.0"},
+      {:cors_plug, "~> 1.4.0"}
     ]
   end
 

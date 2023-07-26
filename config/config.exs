@@ -26,6 +26,13 @@ config :api_uploader, ApiUploaderWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :api_uploader, ApiUploader.Mailer, adapter: Swoosh.Adapters.Local
 
+config :cors_plug,
+  origin: "*",
+  max_age: 86400,
+  methods: ["GET", "POST"],
+  headers: ["Content-Type", "Authorization"]
+
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
