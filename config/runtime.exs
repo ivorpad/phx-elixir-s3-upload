@@ -20,14 +20,6 @@ if System.get_env("PHX_SERVER") do
   config :api_uploader, ApiUploaderWeb.Endpoint, server: true
 end
 
-if config_env() == :prod do
-  database_url =
-    System.get_env("DATABASE_URL") ||
-      raise """
-      environment variable DATABASE_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
-
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
