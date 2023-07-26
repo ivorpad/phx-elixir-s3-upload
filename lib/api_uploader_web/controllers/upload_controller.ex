@@ -3,8 +3,8 @@ defmodule ApiUploaderWeb.UploadController do
 
   def show(conn, _params) do
     json(conn, %{
-      bucket: System.get_env("AWS_ACCESS_KEY_ID"),
-      url: System.get_env("AWS_SECRET_ACCESS_KEY")
+      AWS_ACCESS_KEY_ID: System.get_env("AWS_ACCESS_KEY_ID"),
+      AWS_SECRET_ACCESS_KEY: System.get_env("AWS_SECRET_ACCESS_KEY")
     })
   end
 
