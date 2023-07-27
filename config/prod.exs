@@ -18,18 +18,5 @@ config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: ApiUploader.Finc
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :ex_aws,
-  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
-  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
-  region: System.get_env("AWS_REGION") || "us-east-2"
-
-# debug_requests: true
-
-config :ex_aws, :s3,
-  scheme: "https://",
-  host: "s3-us-east-2.amazonaws.com",
-  bucket: "themeforest-vault",
-  region: "us-east-2"
-
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.

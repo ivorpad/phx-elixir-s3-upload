@@ -34,7 +34,7 @@ defmodule S3Uploader do
     # Stream the file
     file_path
     |> Upload.stream_file()
-    |> S3.upload(bucket_name, s3_path)
+    |> S3.upload(bucket_name, s3_path, [{:storage_class, "DEEP_ARCHIVE"}])
     |> ExAws.request!()
 
     {:ok, file_path}
