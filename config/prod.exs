@@ -18,5 +18,10 @@ config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: ApiUploader.Finc
 # Do not print debug messages in production
 config :logger, level: :info
 
+# debug_requests: true
+
+config :ex_aws, :s3,
+  debug_requests: true
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
