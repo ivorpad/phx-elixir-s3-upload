@@ -19,4 +19,11 @@ defmodule ApiUploaderWeb.UploadController do
   def create(conn, _params) do
     json(conn, %{error: "URL or bucket parameter is missing"})
   end
+
+  def options(conn, _params) do
+    conn
+    |> put_resp_header("access-control-allow-methods", "GET, POST, OPTIONS")
+    |> put_resp_header("access-control-allow-headers", "Authorization, Content-Type")
+    |> send_resp(:no_content, "")
+  end
 end

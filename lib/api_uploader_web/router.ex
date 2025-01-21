@@ -9,6 +9,7 @@ defmodule ApiUploaderWeb.Router do
     pipe_through :api
 
     post "/upload", UploadController, :create
+    options "/upload", UploadController, :options
     get "/upload_vars", UploadController, :show
   end
 
